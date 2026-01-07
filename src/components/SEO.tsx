@@ -1,5 +1,4 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
 
 interface SEOProps {
     title: string;
@@ -68,8 +67,8 @@ const SEO: React.FC<SEOProps> = ({
     };
 
     return (
-        <Helmet>
-            {/* Standard Meta Tags */}
+        <>
+            {/* Standard Meta Tags - React 19 will hoist these to <head> */}
             <title>{fullTitle}</title>
             <meta name="description" content={description} />
             <link rel="canonical" href={canonical} />
@@ -103,7 +102,7 @@ const SEO: React.FC<SEOProps> = ({
             <script type="application/ld+json">
                 {JSON.stringify(structuredData)}
             </script>
-        </Helmet>
+        </>
     );
 };
 
