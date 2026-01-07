@@ -29,7 +29,7 @@ const SEO: React.FC<SEOProps> = ({
         "image": image,
         "@id": "https://ansury.systems",
         "url": "https://ansury.systems",
-        "telephone": "+97444000000",
+        "telephone": "+97451182644",
         "address": {
             "@type": "PostalAddress",
             "streetAddress": "Level 24, Tornado Tower, West Bay",
