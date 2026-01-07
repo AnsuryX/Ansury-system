@@ -1,9 +1,9 @@
 
 import React, { useState, useEffect } from 'react';
-import { 
-  ChevronRight, 
-  ArrowRight, 
-  Play, 
+import {
+  ChevronRight,
+  ArrowRight,
+  Play,
   CheckCircle2,
   Mail,
   MapPin,
@@ -22,6 +22,7 @@ import {
 import Navbar from './components/Navbar';
 import StrategyGenerator from './components/StrategyGenerator';
 import Chatbot from './components/Chatbot';
+import SEO from './components/SEO';
 import { Page, Language } from './types';
 import { SERVICES, CASE_STUDIES, SERVICE_DETAILS } from './constants';
 
@@ -65,7 +66,7 @@ const App: React.FC = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...contactForm, source: 'Contact Form Main', lang, agency: 'Ansury Systems' })
       });
-      
+
       if (response.ok) {
         setSubmitStatus('success');
         setContactForm({ name: '', company: '', email: '', budget: '10,000 - 50,000', message: '' });
@@ -94,14 +95,14 @@ const App: React.FC = () => {
     heroTag: lang === 'en' ? "Stop Leaking Leads. Start Scaling." : "توقف عن فقدان العملاء. ابدأ بالتوسع.",
     heroTitle: lang === 'en' ? "The Autonomous Lead Engine." : "محرك العملاء المحتملين الذاتي.",
     heroSpan: lang === 'en' ? "Autonomous" : "الذاتي",
-    heroDesc: lang === 'en' 
-      ? "Ansury Systems builds landing pages + AI automations that capture, qualify, and follow up with your customers—automatically." 
+    heroDesc: lang === 'en'
+      ? "Ansury Systems builds landing pages + AI automations that capture, qualify, and follow up with your customers—automatically."
       : "أنسوري للأنظمة تبني صفحات هبوط + أتمتة ذكاء اصطناعي تجذب وتؤهل وتتابع عملائك - تلقائياً.",
     ctaStart: lang === 'en' ? "Build Your Engine" : "ابنِ محركك الخاص",
     ctaShowreel: lang === 'en' ? "How It Works" : "كيف يعمل النظام",
     dominance: lang === 'en' ? "End-to-End Automation." : "أتمتة شاملة من البداية للنهاية.",
-    dominanceDesc: lang === 'en' 
-      ? "We don't just build websites. We build autonomous marketing ecosystems designed for the unique dynamics of Doha." 
+    dominanceDesc: lang === 'en'
+      ? "We don't just build websites. We build autonomous marketing ecosystems designed for the unique dynamics of Doha."
       : "نحن لا نبني مجرد مواقع إلكترونية. نحن نبني أنظمة تسويق ذاتية مصممة للديناميكيات الفريدة للدوحة.",
     activeModule: lang === 'en' ? "Conversion Protocol Active" : "بروتوكول التحويل نشط",
     roiLabel: lang === 'en' ? "Projected Efficiency Impact" : "تأثير الكفاءة المتوقع",
@@ -132,6 +133,33 @@ const App: React.FC = () => {
     readBreakdown: lang === 'en' ? "See the Blueprint" : "مشاهدة المخطط",
   };
 
+  const seoData = {
+    home: {
+      title: lang === 'en' ? "Autonomous Lead Engines" : "محركات العملاء المحتملين الذاتية",
+      description: lang === 'en'
+        ? "Ansury Systems builds high-performance AI marketing engines and autonomous landing pages in Qatar. Scale your leads while you sleep."
+        : "أنسوري للأنظمة تبني محركات تسويق بالذكاء الاصطناعي وصفحات هبوط ذاتية في قطر. زد عملائك تلقائياً."
+    },
+    portfolio: {
+      title: lang === 'en' ? "Success Stories" : "قصص النجاح",
+      description: lang === 'en'
+        ? "Explore our portfolio of ROI-driven AI automations and high-converting funnels for businesses across Doha."
+        : "استكشف معرض أعمالنا للأتمتة الذكية والنتائج المحققة للأعمال في الدوحة."
+    },
+    services: {
+      title: lang === 'en' ? "Our Strategic Services" : "خدماتنا الاستراتيجية",
+      description: lang === 'en'
+        ? "From AI strategy to autonomous lead qualification, discover our suite of marketing automation solutions."
+        : "من استراتيجيات الذكاء الاصطناعي إلى تأهيل العملاء الذاتي، اكتشف مجموعة حلول أتمتة التسويق لدينا."
+    },
+    contact: {
+      title: lang === 'en' ? "Start Your Automation" : "ابدأ الأتمتة الخاصة بك",
+      description: lang === 'en'
+        ? "Ready to scale? Contact Ansury Systems for a custom automation blueprint and stop leaking leads."
+        : "جاهز للتوسع؟ اتصل بأنسوري للأنظمة للحصول على مخطط أتمتة مخصص وتوقف عن فقدان العملاء."
+    }
+  };
+
   const renderHome = () => (
     <>
       <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
@@ -143,7 +171,7 @@ const App: React.FC = () => {
             <span className="flex h-2 w-2 rounded-full bg-cyan-400 animate-pulse"></span>
             <span className="text-xs font-bold tracking-widest uppercase text-slate-300">{t.heroTag}</span>
           </div>
-          
+
           <h1 className="text-5xl md:text-8xl font-black mb-8 leading-[1.1] tracking-tight">
             {lang === 'en' ? (
               <>The <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600 italic">Autonomous</span> Lead Engine.</>
@@ -151,19 +179,19 @@ const App: React.FC = () => {
               <>{t.heroTitle}</>
             )}
           </h1>
-          
+
           <p className="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto mb-12 leading-relaxed">
             {t.heroDesc}
           </p>
 
           <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-6 rtl:space-x-reverse animate-in fade-in slide-in-from-bottom duration-1500 delay-500">
-            <button 
+            <button
               onClick={() => setCurrentPage('contact')}
               className="w-full md:w-auto px-10 py-5 bg-cyan-500 text-slate-900 font-black rounded-full text-lg hover:bg-cyan-400 transition-all shadow-[0_0_30px_rgba(34,211,238,0.4)] flex items-center justify-center"
             >
               {t.ctaStart} <ArrowRight className={`ml-2 rtl:mr-2 rtl:rotate-180`} />
             </button>
-            <button 
+            <button
               onClick={() => setCurrentPage('portfolio')}
               className="w-full md:w-auto px-10 py-5 glass text-white font-bold rounded-full text-lg flex items-center justify-center hover:bg-white/10 transition-all"
             >
@@ -183,7 +211,7 @@ const App: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-5 space-y-4">
               {SERVICES.map((s) => (
-                <div 
+                <div
                   key={s.id}
                   onMouseEnter={() => {
                     setActiveService(s.id);
@@ -212,12 +240,12 @@ const App: React.FC = () => {
                     <span className="px-4 py-1 bg-cyan-500/10 text-cyan-400 text-[10px] font-black uppercase tracking-widest rounded-full border border-cyan-500/20">{t.activeModule}</span>
                     <Sparkles size={16} className="text-cyan-400" />
                   </div>
-                  
+
                   <h2 className="text-4xl font-black mb-4 text-white">{SERVICES.find(s => s.id === activeService)?.title[lang]}</h2>
                   <p className="text-lg text-slate-300 mb-10 leading-relaxed max-w-xl">
                     {SERVICES.find(s => s.id === activeService)?.description[lang]}
                   </p>
-                  
+
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
                     <div>
                       <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">{t.roiLabel}</h4>
@@ -239,8 +267,8 @@ const App: React.FC = () => {
                     <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-6">{t.featuresLabel}</h4>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                       {SERVICE_DETAILS[activeService as keyof typeof SERVICE_DETAILS].features[lang].map((f, idx) => (
-                        <div 
-                          key={idx} 
+                        <div
+                          key={idx}
                           onMouseEnter={() => setHoveredFeature(idx)}
                           onMouseLeave={() => setHoveredFeature(null)}
                           className="relative group/feat"
@@ -249,7 +277,7 @@ const App: React.FC = () => {
                             <CheckCircle2 size={16} className="text-cyan-500 shrink-0" />
                             <span className="text-xs font-medium text-slate-300 group-hover/feat:text-white transition-colors">{f.name}</span>
                           </div>
-                          
+
                           {/* Interactive Tooltip */}
                           {hoveredFeature === idx && (
                             <div className={`absolute bottom-full mb-3 left-1/2 -translate-x-1/2 w-64 p-5 glass rounded-2xl border-cyan-500/40 shadow-[0_10px_30px_rgba(0,0,0,0.5),0_0_15px_rgba(34,211,238,0.2)] z-[60] animate-in fade-in slide-in-from-bottom-2 duration-300 pointer-events-none`}>
@@ -270,7 +298,7 @@ const App: React.FC = () => {
                   </div>
 
                   <div className="mt-12 flex justify-end">
-                    <button 
+                    <button
                       onClick={() => setCurrentPage('contact')}
                       className="px-8 py-4 bg-cyan-500 text-slate-900 font-black rounded-xl hover:bg-cyan-400 transition-all transform hover:scale-105 active:scale-95 flex items-center"
                     >
@@ -288,8 +316,8 @@ const App: React.FC = () => {
 
       <section className="py-24">
         <div className="container mx-auto px-6 text-center">
-            <h2 className="text-4xl md:text-6xl font-black mb-6">{lang === 'en' ? <>{t.winsTitle.split(' ')[0]} <span className="text-cyan-400">{t.winsTitle.split(' ')[1]}</span></> : t.winsTitle}</h2>
-            <p className="text-lg text-slate-400 max-w-2xl mx-auto mb-16">{t.winsDesc}</p>
+          <h2 className="text-4xl md:text-6xl font-black mb-6">{lang === 'en' ? <>{t.winsTitle.split(' ')[0]} <span className="text-cyan-400">{t.winsTitle.split(' ')[1]}</span></> : t.winsTitle}</h2>
+          <p className="text-lg text-slate-400 max-w-2xl mx-auto mb-16">{t.winsDesc}</p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {CASE_STUDIES.map((study) => (
@@ -315,7 +343,7 @@ const App: React.FC = () => {
               </div>
             ))}
           </div>
-          
+
           <div className="mt-16">
             <button onClick={() => setCurrentPage('portfolio')} className="px-12 py-4 border border-white/10 hover:border-cyan-500 rounded-full font-bold transition-all inline-flex items-center">
               {t.seeFullPortfolio} <ArrowRight size={18} className="ml-2 rtl:mr-2 rtl:rotate-180" />
@@ -340,7 +368,7 @@ const App: React.FC = () => {
             <img key={activeStudy.id} src={activeStudy.image} className="w-full h-full object-cover opacity-40" alt={activeStudy.client} />
           </div>
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/40 to-transparent rtl:bg-gradient-to-l"></div>
-          
+
           <div className="container mx-auto h-full px-6 relative z-10 flex items-center">
             <div className="max-w-3xl">
               <div className="flex items-center space-x-4 rtl:space-x-reverse mb-8">
@@ -349,7 +377,7 @@ const App: React.FC = () => {
               </div>
               <h2 className="text-4xl md:text-7xl font-black text-white mb-6 leading-tight">{activeStudy.title[lang]}</h2>
               <p className="text-xl text-slate-300 mb-10 leading-relaxed">{activeStudy.description[lang]}</p>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
                 {activeStudy.results[lang].map((r, i) => (
                   <div key={i} className="glass p-6 rounded-2xl border-cyan-500/20">
@@ -364,8 +392,8 @@ const App: React.FC = () => {
                   {t.readBreakdown}
                 </button>
                 <div className="flex space-x-2 rtl:space-x-reverse">
-                  <button onClick={() => setCarouselIndex((carouselIndex - 1 + CASE_STUDIES.length) % CASE_STUDIES.length)} className="p-4 rounded-full border border-white/10 hover:bg-white/5 text-white"><ChevronLeft size={24} className="rtl:rotate-180"/></button>
-                  <button onClick={() => setCarouselIndex((carouselIndex + 1) % CASE_STUDIES.length)} className="p-4 rounded-full border border-white/10 hover:bg-white/5 text-white"><ChevronRight size={24} className="rtl:rotate-180"/></button>
+                  <button onClick={() => setCarouselIndex((carouselIndex - 1 + CASE_STUDIES.length) % CASE_STUDIES.length)} className="p-4 rounded-full border border-white/10 hover:bg-white/5 text-white"><ChevronLeft size={24} className="rtl:rotate-180" /></button>
+                  <button onClick={() => setCarouselIndex((carouselIndex + 1) % CASE_STUDIES.length)} className="p-4 rounded-full border border-white/10 hover:bg-white/5 text-white"><ChevronRight size={24} className="rtl:rotate-180" /></button>
                 </div>
               </div>
             </div>
@@ -382,7 +410,7 @@ const App: React.FC = () => {
           <div>
             <h1 className="text-5xl md:text-7xl font-black mb-8 leading-tight">{t.contactTitle}</h1>
             <p className="text-xl text-slate-400 mb-12">{t.contactDesc}</p>
-            
+
             <div className="space-y-8">
               <div className="flex items-start">
                 <div className="w-14 h-14 rounded-2xl glass flex items-center justify-center mr-6 rtl:mr-0 rtl:ml-6 shrink-0 border-cyan-500/30"><Mail className="text-cyan-400" /></div>
@@ -413,20 +441,20 @@ const App: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">{t.fullName}</label>
-                    <input required type="text" className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-4 text-white focus:border-cyan-500 outline-none" value={contactForm.name} onChange={(e) => setContactForm({...contactForm, name: e.target.value})} />
+                    <input required type="text" className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-4 text-white focus:border-cyan-500 outline-none" value={contactForm.name} onChange={(e) => setContactForm({ ...contactForm, name: e.target.value })} />
                   </div>
                   <div className="space-y-2">
                     <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">{t.company}</label>
-                    <input required type="text" className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-4 text-white focus:border-cyan-500 outline-none" value={contactForm.company} onChange={(e) => setContactForm({...contactForm, company: e.target.value})} />
+                    <input required type="text" className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-4 text-white focus:border-cyan-500 outline-none" value={contactForm.company} onChange={(e) => setContactForm({ ...contactForm, company: e.target.value })} />
                   </div>
                 </div>
                 <div className="space-y-2">
                   <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">{t.email}</label>
-                  <input required type="email" className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-4 text-white focus:border-cyan-500 outline-none" value={contactForm.email} onChange={(e) => setContactForm({...contactForm, email: e.target.value})} />
+                  <input required type="email" className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-4 text-white focus:border-cyan-500 outline-none" value={contactForm.email} onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })} />
                 </div>
                 <div className="space-y-2">
                   <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">{t.msg}</label>
-                  <textarea required rows={4} className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-4 text-white focus:border-cyan-500 outline-none resize-none" value={contactForm.message} onChange={(e) => setContactForm({...contactForm, message: e.target.value})}></textarea>
+                  <textarea required rows={4} className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-4 text-white focus:border-cyan-500 outline-none resize-none" value={contactForm.message} onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}></textarea>
                 </div>
                 <button disabled={isSubmitting} className="w-full py-5 bg-cyan-500 text-slate-900 font-black rounded-xl hover:bg-cyan-400 flex items-center justify-center space-x-2">
                   {isSubmitting ? <Loader2 className="animate-spin" /> : t.send}
@@ -450,6 +478,11 @@ const App: React.FC = () => {
 
   return (
     <div className={`min-h-screen ${lang === 'ar' ? 'font-arabic' : ''}`}>
+      <SEO
+        title={seoData[currentPage].title}
+        description={seoData[currentPage].description}
+        lang={lang}
+      />
       <Navbar currentPage={currentPage} setPage={setCurrentPage} lang={lang} toggleLang={toggleLang} />
       <main>{renderContent()}</main>
       <Chatbot onHandover={() => { setCurrentPage('contact'); setTimeout(() => document.getElementById('contact-section')?.scrollIntoView({ behavior: 'smooth' }), 100); }} />
