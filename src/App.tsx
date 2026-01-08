@@ -93,47 +93,47 @@ const App: React.FC = () => {
   };
 
   const t = {
-    heroTag: lang === 'en' ? "Stop Leaking Leads. Start Scaling." : "توقف عن فقدان العملاء. ابدأ بالتوسع.",
-    heroTitle: lang === 'en' ? "The Autonomous Lead Engine." : "محرك العملاء المحتملين الذاتي.",
-    heroSpan: lang === 'en' ? "Autonomous" : "الذاتي",
+    heroTag: lang === 'en' ? "High-Performance Growth Systems" : "أنظمة نمو عالية الأداء",
+    heroTitle: lang === 'en' ? "Stop Missing Leads at Night. Convert Them While You Sleep." : "توقف عن فقدان العملاء ليلاً. حولهم إلى صفقات أثناء نومك.",
+    heroSpan: lang === 'en' ? "While You Sleep" : "أثناء نومك",
     heroDesc: lang === 'en'
-      ? "Ansury Systems builds landing pages + AI automations that capture, qualify, and follow up with your customers—automatically."
-      : "أنسوري للأنظمة تبني صفحات هبوط + أتمتة ذكاء اصطناعي تجذب وتؤهل وتتابع عملائك - تلقائياً.",
-    ctaStart: lang === 'en' ? "Build Your Engine" : "ابنِ محركك الخاص",
+      ? "Ansury Systems builds high-speed landing pages and AI automations that capture, qualify, and book real clients — automatically."
+      : "أنسوري للأنظمة تبني صفحات هبوط سريعة وأتمتة ذكاء اصطناعي تجذب وتؤهل وتحجز عملاء حقيقيين - تلقائياً.",
+    ctaStart: lang === 'en' ? "Build My Growth Strategy" : "ابنِ استراتيجية نموي الآن",
     ctaShowreel: lang === 'en' ? "How It Works" : "كيف يعمل النظام",
-    dominance: lang === 'en' ? "End-to-End Automation." : "أتمتة شاملة من البداية للنهاية.",
+    dominance: lang === 'en' ? "Own Your Market with Automation." : "سيطر على سوقك من خلال الأتمتة.",
     dominanceDesc: lang === 'en'
-      ? "We don't just build websites. We build autonomous marketing ecosystems designed for the unique dynamics of Doha."
-      : "نحن لا نبني مجرد مواقع إلكترونية. نحن نبني أنظمة تسويق ذاتية مصممة للديناميكيات الفريدة للدوحة.",
+      ? "We don't just build websites. We build autonomous marketing ecosystems that turn static traffic into consistent revenue."
+      : "نحن لا نبني مجرد مواقع إلكترونية. نحن نبني أنظمة تسويق ذاتية تحول الزيارات الثابتة إلى إيرادات مستمرة.",
     activeModule: lang === 'en' ? "Conversion Protocol Active" : "بروتوكول التحويل نشط",
-    roiLabel: lang === 'en' ? "Projected Efficiency Impact" : "تأثير الكفاءة المتوقع",
-    techStack: lang === 'en' ? "Automation Stack" : "مجموعة تقنيات الأتمتة",
-    featuresLabel: lang === 'en' ? "Strategic Capabilities" : "القدرات الاستراتيجية",
-    initStrategy: lang === 'en' ? "Blueprint Your Funnel" : "خطط لمسار تحويلك",
-    winsTitle: lang === 'en' ? "Proven Funnels." : "أقماع مبيعات مثبتة.",
-    winsDesc: lang === 'en' ? "See how we've turned static businesses into 24/7 lead machines across Qatar." : "تعرف على كيفية تحويلنا للأعمال الثابتة إلى آلات لجذب العملاء تعمل 24/7 في جميع أنحاء قطر.",
-    seeFullPortfolio: lang === 'en' ? "View Success Stories" : "مشاهدة قصص النجاح",
-    contactTitle: lang === 'en' ? "Ready to Automate?" : "جاهز للأتمتة؟",
-    contactDesc: lang === 'en' ? "Let's turn your marketing into a high-performance system that qualifies leads while you sleep." : "لنحول تسويقك إلى نظام عالي الأداء يؤهل العملاء أثناء نومك.",
-    emailUs: lang === 'en' ? "Email Us" : "راسلنا",
-    callUs: lang === 'en' ? "Direct Command" : "الاتصال المباشر",
-    hq: lang === 'en' ? "Base of Operations" : "قاعدة العمليات",
+    roiLabel: lang === 'en' ? "Your Growth Potential" : "إمكانات نموك",
+    techStack: lang === 'en' ? "Powering Your Funnel" : "تقنيات قمع مبيعاتك",
+    featuresLabel: lang === 'en' ? "How You Win" : "كيف تربح معنا",
+    initStrategy: lang === 'en' ? "Get My Free Blueprint" : "احصل على مخططي المجاني",
+    winsTitle: lang === 'en' ? "Proven Growth Engines." : "محركات نمو مثبتة.",
+    winsDesc: lang === 'en' ? "See how we've turned manual businesses into 24/7 high-performance revenue machines across Qatar." : "تعرف على كيفية تحويل العمال اليدوية إلى آلات إيرادات عالية الأداء تعمل 24/7 في جميع أنحاء قطر.",
+    seeFullPortfolio: lang === 'en' ? "See More Success Stories" : "مشاهدة المزيد من قصص النجاح",
+    contactTitle: lang === 'en' ? "Ready to Automate Your Revenue?" : "جاهز لأتمتة إيراداتك؟",
+    contactDesc: lang === 'en' ? "Let's turn your marketing into a high-performance system that qualifies leads and closes deals while you're offline." : "لنحول تسويقك إلى نظام عالي الأداء يؤهل العملاء ويغلق الصفقات حتى وأنت غير متصل.",
+    emailUs: lang === 'en' ? "Email Our Strategists" : "راسل خبرائنا الاستراتيجيين",
+    callUs: lang === 'en' ? "WhatsApp Direct Sync" : "مزامنة واتساب المباشرة",
+    hq: lang === 'en' ? "Innovation Hub" : "مركز الابتكار",
     hqAddr: lang === 'en' ? "Level 24, Tornado Tower, West Bay, Doha, Qatar" : "الطابق 24، برج تورنيدو، الخليج الغربي، الدوحة، قطر",
-    formTitle: lang === 'en' ? "Claim Your Automation Blueprint" : "احصل على مخطط أتمتة خاص بك",
+    formTitle: lang === 'en' ? "Claim Your Free Automation Strategy" : "احصل على استراتيجية الأتمتة المجانية الخاصة بك",
     fullName: lang === 'en' ? "Full Name" : "الاسم الكامل",
     company: lang === 'en' ? "Company Name" : "اسم الشركة",
     email: lang === 'en' ? "Business Email" : "البريد الإلكتروني للعمل",
-    budget: lang === 'en' ? "Target Monthly Lead Volume" : "حجم العملاء الشهري المستهدف",
-    msg: lang === 'en' ? "Current Lead Process" : "عملية العملاء الحالية",
-    send: lang === 'en' ? "Initiate Transmission" : "بدء الإرسال",
-    successMsg: lang === 'en' ? "Protocol Initialized" : "تم تهيئة البروتوكول",
-    successDesc: lang === 'en' ? "An automation specialist will review your data. Expected link established: < 4 hours." : "سيقوم أخصائي أتمتة بمراجعة بياناتك. الربط المتوقع: أقل من 4 ساعات.",
-    flagship: lang === 'en' ? "Automation Exhibits." : "معرض الأتمتة.",
-    flagshipDesc: lang === 'en' ? "Real results. Real ROI. No manual follow-ups." : "نتائج حقيقية. عائد حقيقي. لا متابعات يدوية.",
-    caseNo: lang === 'en' ? "System Exhibit" : "نموذج النظام",
-    readBreakdown: lang === 'en' ? "See the Blueprint" : "مشاهدة المخطط",
-    testimonialsTitle: lang === 'en' ? "Client Feedback." : "آراء العملاء.",
-    testimonialsDesc: lang === 'en' ? "Trusted by forward-thinking companies across Qatar." : "موثوق به من قبل الشركات المتطلعة للمستقبل في جميع أنحاء قطر.",
+    budget: lang === 'en' ? "Desired Monthly Lead Volume" : "حجم العملاء الشهري المطلوب",
+    msg: lang === 'en' ? "Your Biggest Scaling Bottleneck?" : "ما هي أكبر عقبة تواجه توسعك حالياً؟",
+    send: lang === 'en' ? "Initialize My Growth" : "ابدأ نموي الآن",
+    successMsg: lang === 'en' ? "Strategy Request Received" : "تم استلام طلب الاستراتيجية",
+    successDesc: lang === 'en' ? "An automation expert is reviewing your data. Expected link established: < 4 hours." : "يقوم خبير أتمتة بمراجعة بياناتك. التواصل المتوقع: أقل من 4 ساعات.",
+    flagship: lang === 'en' ? "Profit Exhibitions." : "معرض الأرباح.",
+    flagshipDesc: lang === 'en' ? "Real companies. Real ROI. Zero manual work." : "شركات حقيقية. عائد حقيقي. صفر عمل يدوي.",
+    caseNo: lang === 'en' ? "Revenue Exhibit" : "نموذج الإيرادات",
+    readBreakdown: lang === 'en' ? "View My Strategy Blueprint" : "عرض مخطط الاستراتيجية الخاص بي",
+    testimonialsTitle: lang === 'en' ? "The Results Speak." : "النتائج تتحدث.",
+    testimonialsDesc: lang === 'en' ? "Trusted by Qatar's fastest-growing business leaders." : "موثوق به من قبل قادة الأعمال الأسرع نمواً في قطر.",
   };
 
   const seoData = {
@@ -178,7 +178,7 @@ const App: React.FC = () => {
 
             <h1 className="text-5xl md:text-8xl font-black mb-8 leading-[1.1] tracking-tight">
               {lang === 'en' ? (
-                <>The <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600 italic">Autonomous</span> Lead Engine.</>
+                <>Stop Missing Leads at Night. Convert Them <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600 italic">While You Sleep.</span></>
               ) : (
                 <>{t.heroTitle}</>
               )}
@@ -313,6 +313,15 @@ const App: React.FC = () => {
                 </div>
               </div>
             </div>
+
+            <div className="mt-16 text-center lg:hidden">
+              <button
+                onClick={() => setCurrentPage('contact')}
+                className="px-10 py-5 bg-cyan-500 text-slate-900 font-black rounded-full text-lg hover:bg-cyan-400 transition-all shadow-[0_0_30px_rgba(34,211,238,0.4)] inline-flex items-center"
+              >
+                {t.ctaStart} <ArrowRight className="ml-2 rtl:mr-2 rtl:rotate-180" size={18} />
+              </button>
+            </div>
           </div>
         </section>
 
@@ -349,9 +358,17 @@ const App: React.FC = () => {
             </div>
 
             <div className="mt-16">
-              <button onClick={() => setCurrentPage('portfolio')} className="px-12 py-4 border border-white/10 hover:border-cyan-500 rounded-full font-bold transition-all inline-flex items-center">
-                {t.seeFullPortfolio} <ArrowRight size={18} className="ml-2 rtl:mr-2 rtl:rotate-180" />
+              <button
+                onClick={() => setCurrentPage('contact')}
+                className="px-12 py-5 bg-cyan-500 text-slate-900 font-black rounded-full hover:bg-cyan-400 transition-all shadow-[0_0_30px_rgba(34,211,238,0.3)] inline-flex items-center"
+              >
+                {t.ctaStart} <ArrowRight size={20} className="ml-2 rtl:mr-2 rtl:rotate-180" />
               </button>
+              <div className="mt-6">
+                <button onClick={() => setCurrentPage('portfolio')} className="text-slate-500 hover:text-white font-bold transition-all text-sm uppercase tracking-widest">
+                  {t.seeFullPortfolio}
+                </button>
+              </div>
             </div>
           </div>
         </section>
@@ -391,6 +408,15 @@ const App: React.FC = () => {
                   </div>
                 </div>
               ))}
+            </div>
+
+            <div className="mt-20 text-center">
+              <button
+                onClick={() => setCurrentPage('contact')}
+                className="px-12 py-6 bg-cyan-500 text-slate-900 font-black rounded-full text-xl hover:bg-cyan-400 transition-all shadow-[0_0_40px_rgba(34,211,238,0.5)] transform hover:scale-105 active:scale-95 inline-flex items-center"
+              >
+                {t.ctaStart} <ArrowRight size={24} className="ml-3 rtl:mr-3 rtl:rotate-180" />
+              </button>
             </div>
           </div>
         </section>
@@ -432,7 +458,10 @@ const App: React.FC = () => {
               </div>
 
               <div className="flex items-center space-x-6 rtl:space-x-reverse">
-                <button className="px-10 py-5 bg-cyan-500 text-slate-900 font-black rounded-full hover:bg-cyan-400 transition-all">
+                <button
+                  onClick={() => setCurrentPage('contact')}
+                  className="px-10 py-5 bg-cyan-500 text-slate-900 font-black rounded-full hover:bg-cyan-400 transition-all"
+                >
                   {t.readBreakdown}
                 </button>
                 <div className="flex space-x-2 rtl:space-x-reverse">

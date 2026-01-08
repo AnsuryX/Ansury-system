@@ -6,37 +6,37 @@ import { Service, CaseStudy, Testimonial } from './types';
 export const SERVICES: Service[] = [
   {
     id: 'conversion-pages',
-    title: { en: 'Conversion Architecture', ar: 'هندسة التحويل' },
+    title: { en: 'Explosive Growth Layouts', ar: 'تخطيطات النمو المتفجرة' },
     description: {
-      en: 'Elite landing pages engineered for the Qatari market, optimized for lightning-fast speeds and maximum lead capture.',
-      ar: 'صفحات هبوط نخبوية مصممة للسوق القطري، محسنة لسرعات فائقة وأقصى قدر من جذب العملاء.'
+      en: 'Stop losing half your visitors to slow speeds. We build high-performance pages that turn Qatari traffic into immediate bookings.',
+      ar: 'توقف عن فقدان نصف زوارك بسبب السرعات البطيئة. نحن نبني صفحات عالية الأداء تحول الزيارات القطرية إلى حجوزات فورية.'
     },
     icon: 'LayoutTemplate'
   },
   {
     id: 'ai-qualification',
-    title: { en: 'Autonomous Qualification', ar: 'التأهيل الذاتي' },
+    title: { en: 'Filter Out Tire-Kickers', ar: 'تصفية المتفرجين' },
     description: {
-      en: 'AI-driven screening and dynamic scoring that identifies high-intent buyers based on budget, urgency, and fit.',
-      ar: 'فحص مدعوم بالذكاء الاصطناعي وتقييم ديناميكي يحدد المشترين ذوي النية العالية بناءً على الميزانية والإلحاح والملاءمة.'
+      en: 'Your sales team speaks only to ready-to-pay investors. Our AI filters high-intent buyers based on budget and urgency automatically.',
+      ar: 'فريق مبيعاتك سيتحدث فقط مع المستثمرين المستعدين للدفع. يقوم ذكاؤنا الاصطناعي بتصفية المشترين ذوي النية العالية بناءً على الميزانية والإلحاح تلقائياً.'
     },
     icon: 'BrainCircuit'
   },
   {
     id: 'follow-up-engine',
-    title: { en: '24/7 Follow-up Protocol', ar: 'بروتوكول المتابعة 24/7' },
+    title: { en: 'Close Deals While You Sleep', ar: 'إغلاق الصفقات أثناء نومك' },
     description: {
-      en: 'Never lose a lead to silence. Our bots follow up via WhatsApp, SMS, and Email within seconds of contact.',
-      ar: 'لا تفقد عميلاً بسبب الصمت أبداً. تقوم بوتاتنا بالمتابعة عبر واتساب ورسائل SMS والبريد الإلكتروني في غضون ثوانٍ.'
+      en: 'Never let a lead go cold. Our autonomous follow-up reaches your customers on WhatsApp and SMS within seconds of contact.',
+      ar: 'لا تترك أي عميل يبرد أبداً. متابعتنا الذاتية تصل إلى عملائك عبر واتساب والرسائل النصية في غضون ثوانٍ من الاتصال.'
     },
     icon: 'Zap'
   },
   {
     id: 'growth-sync',
-    title: { en: 'Growth Synchronization', ar: 'مزامنة النمو' },
+    title: { en: 'Master Your ROI', ar: 'إتقان عائد استثمارك' },
     description: {
-      en: 'Seamless CRM integration that maps every automated touchpoint to your bottom line revenue.',
-      ar: 'تكامل CRM سلس يربط كل نقطة اتصال مؤتمتة بصافي إيراداتك.'
+      en: 'Get 100% visibility on your marketing spend. We sync every lead to your revenue, showing you exactly what drives your growth.',
+      ar: 'احصل على رؤية بنسبة 100% على إنفاقك التسويقي. نحن نربط كل عميل بإيراداتك، لنبين لك بالضبط ما الذي يحرك نموك.'
     },
     icon: 'LineChart'
   }
@@ -45,67 +45,65 @@ export const SERVICES: Service[] = [
 export const SERVICE_DETAILS = {
   'conversion-pages': {
     tools: ['Next.js', 'Vercel Edge', 'A/B Testing'],
-    roi: { en: 'Average 3.5x increase in conversion rate.', ar: 'متوسط زيادة 3.5 ضعف في معدل التحويل.' },
+    roi: { en: '3.5x higher conversion than standard templates.', ar: 'تحويل أعلى بـ 3.5 ضعف من القوالب القياسية.' },
     features: {
       en: [
-        { name: 'Khaleeji-First Design', explanation: 'Visual layouts and typography specifically tested for Arabic reading patterns and luxury Qatari tastes.' },
-        { name: 'Edge Performance', explanation: 'Sub-second load times across Doha to prevent drop-offs on mobile 5G networks.' },
-        { name: 'Conversion-First Copy', explanation: 'Psychology-backed headlines designed to turn local traffic into immediate action.' }
+        { name: 'Khaleeji-Focused UX', explanation: 'Visual layouts precisely tuned for Qatari luxury tastes and Arabic reading patterns.' },
+        { name: 'Sub-Second Speeds', explanation: 'Eliminate drop-offs with pages that load in under 500ms across Doha.' },
+        { name: 'Psych-Driven Copy', explanation: 'Headlines engineered to trigger immediate action from local high-net-worth traffic.' }
       ],
       ar: [
-        { name: 'تصميم خليجي أولاً', explanation: 'تخطيطات مرئية وطباعة تم اختبارها خصيصاً لأنماط القراءة العربية والأذواق القطرية الفاخرة.' },
-        { name: 'أداء الحافة (Edge)', explanation: 'مرات تحميل أقل من ثانية في جميع أنحاء الدوحة لمنع التسرب على شبكات الجوال 5G.' },
-        { name: 'نصوص تحويلية', explanation: 'عناوين مدعومة بعلم النفس مصممة لتحويل الزيارات المحلية إلى إجراءات فورية.' }
+        { name: 'تجربة مستخدم خليجية', explanation: 'تخطيطات مرئية مضبوطة بدقة للأذواق القطرية الفاخرة وأنماط القراءة العربية.' },
+        { name: 'سرعات أقل من ثانية', explanation: 'القضاء على التسرب من خلال صفحات يتم تحميلها في أقل من 500 مللي ثانية في جميع أنحاء الدوحة.' },
+        { name: 'نصوص مدفوعة بعلم النفس', explanation: 'عناوين مصممة لتحفيز إجراءات فورية من الزيارات المحلية ذات الملاءة المالية العالية.' }
       ]
     }
   },
   'ai-qualification': {
     tools: ['GPT-4o', 'Condition Logic', 'NLP Dialects'],
-    roi: { en: 'Save 20+ hours of sales team time per week.', ar: 'توفير أكثر من 20 ساعة من وقت فريق المبيعات أسبوعياً.' },
+    roi: { en: 'Reclaim 20+ hours of sales team time per week.', ar: 'استعادة أكثر من 20 ساعة من وقت فريق المبيعات أسبوعياً.' },
     features: {
       en: [
-        { name: 'Intent Scoring', explanation: 'AI agents that ask strategic questions to determine budget, timeline, and urgency automatically.' },
-        { name: 'AI Lead Scoring', explanation: 'Sophisticated ranking based on budget, urgency, and business fit to prioritize high-value prospects.' },
-        { name: 'Multi-Channel Capture', explanation: 'Uniform qualification logic across your website, Instagram DMs, and WhatsApp.' },
-        { name: 'Instant CRM Entry', explanation: 'Qualified leads are automatically pushed to your sales team with a full summary of their needs.' }
+        { name: 'Budget Verification', explanation: 'AI agents that pinpoint funding and budget availability before you ever pick up the phone.' },
+        { name: 'Intent Scoring', explanation: 'Automatically rank leads from "just browsing" to "ready to buy now".' },
+        { name: 'Multi-Channel Screening', explanation: 'Unified qualification logic across your Website, WhatsApp, and Instagram DMs.' }
       ],
       ar: [
-        { name: 'سجل النية', explanation: 'وكلاء ذكاء اصطناعي يطرحون أسئلة استراتيجية لتحديد الميزانية والجدول الزمني ومدى الإلحاح آلياً.' },
-        { name: 'تقييم العملاء الذكي', explanation: 'تصنيف متطور يعتمد على الميزانية ومدى الإلحاح وملاءمة العمل لتحديد أولويات العملاء ذوي القيمة العالية.' },
-        { name: 'جذب متعدد القنوات', explanation: 'منطق تأهيل موحد عبر موقعك الإلكتروني ورسائل إنستغرام وواتساب.' },
-        { name: 'إدخال CRM فوري', explanation: 'يتم دفع العملاء المؤهلين تلقائياً إلى فريق المبيعات مع ملخص كامل لاحتياجاتهم.' }
+        { name: 'التحقق من الميزانية', explanation: 'وكلاء ذكاء اصطناعي يحددون التمويل وتوافر الميزانية قبل أن ترفع الهاتف.' },
+        { name: 'سجل النية', explanation: 'تصنيف العملاء تلقائياً من "مجرد تصفح" إلى "مستعد للشراء الآن".' },
+        { name: 'فحص متعدد القنوات', explanation: 'منطق تأهيل موحد عبر موقعك الإلكتروني وواتساب ورسائل إنستغرام.' }
       ]
     }
   },
   'follow-up-engine': {
     tools: ['Ansury Automate', 'WhatsApp API', 'SMTP Relay'],
-    roi: { en: '90% reduction in lead response time.', ar: 'انخفاض بنسبة 90% في وقت الاستجابة للعملاء.' },
+    roi: { en: '90% faster response than human teams.', ar: 'استجابة أسرع بنسبة 90% من الفرق البشرية.' },
     features: {
       en: [
-        { name: 'Rapid-Fire Response', explanation: 'The "5-minute rule" automated. Reach leads while they are still on your site.' },
-        { name: 'Drip Nurture Logic', explanation: 'Multi-day follow-up sequences that handle objections and share case studies autonomously.' },
-        { name: 'Meeting Scheduler', explanation: 'Integrated booking systems that let qualified leads choose a time on your calendar instantly.' }
+        { name: 'The 60-Second Rule', explanation: 'The "sweet spot" response time. Connect with leads while their interest is at its peak.' },
+        { name: 'Persistent Nurturing', explanation: 'Multi-day sequences that handle objections and share proof without manual effort.' },
+        { name: 'Auto-Scheduling', explanation: 'Let qualified leads book directly into your calendar with zero back-and-forth.' }
       ],
       ar: [
-        { name: 'استجابة سريعة جداً', explanation: 'أتمتة "قاعدة الـ 5 دقائق". تواصل مع العملاء بينما لا يزالون في موقعك.' },
-        { name: 'منطق رعاية التقطير', explanation: 'سلاسل متابعة متعددة الأيام تتعامل مع الاعتراضات وتشارك دراسات الحالة ذاتياً.' },
-        { name: 'مجدول المواعيد', explanation: 'أنظمة حجز متكاملة تتيح للعملاء المؤهلين اختيار وقت في تقويمك فوراً.' }
+        { name: 'قاعدة الـ 60 ثانية', explanation: 'وقت الاستجابة المثالي. تواصل مع العملاء بينما اهتمامهم في ذروته.' },
+        { name: 'رعاية مستمرة', explanation: 'سلاسل متابعة لعدة أيام تتعامل مع الاعتراضات وتشارك الإثباتات دون جهد يدوي.' },
+        { name: 'جدولة تلقائية', explanation: 'دع العملاء المؤهلين يحجزون مباشرة في تقويمك دون أي مراسلات متبادلة.' }
       ]
     }
   },
   'growth-sync': {
     tools: ['Looker Studio', 'Zapier', 'Custom Webhooks'],
-    roi: { en: '100% visibility on marketing spend.', ar: 'رؤية بنسبة 100% على الإنفاق التسويقي.' },
+    roi: { en: '100% clarity on marketing ROI.', ar: 'وضوح بنسبة 100% على عائد استثمار التسويق.' },
     features: {
       en: [
-        { name: 'Live Command Center', explanation: 'Real-time dashboard showing exactly how many leads are in each stage of your automated funnel.' },
-        { name: 'Attribution Mapping', explanation: 'Know exactly which ad or campaign generated the highest value qualified leads.' },
-        { name: 'Automated Reporting', explanation: 'Weekly performance digests sent to your inbox—no more manual spreadsheets.' }
+        { name: 'ROI Dashboard', explanation: 'Watch your revenue grow in real-time with zero manual data entry.' },
+        { name: 'Ad Spend Guard', explanation: 'Instantly identify which ads are wasting money and which are winning leads.' },
+        { name: 'Executive Digests', explanation: 'Weekly performance summaries sent to your WhatsApp — no more spreadsheets.' }
       ],
       ar: [
-        { name: 'مركز القيادة المباشر', explanation: 'لوحة تحكم في الوقت الفعلي توضح بالضبط عدد العملاء في كل مرحلة من مراحل قمعك المؤتمت.' },
-        { name: 'خرائط الإسناد', explanation: 'اعرف بالضبط أي إعلان أو حملة ولدت أعلى قيمة من العملاء المؤهلين.' },
-        { name: 'تقارير مؤتمتة', explanation: 'ملخصات أداء أسبوعية تُرسل إلى بريدك الوارد - لا مزيد من جداول البيانات اليدوية.' }
+        { name: 'لوحة تحكم ROI', explanation: 'شاهد نمو إيراداتك في الوقت الفعلي دون أي إدخال يدوي للبيانات.' },
+        { name: 'حارس الإنفاق الإعلاني', explanation: 'حدد فوراً أي الإعلانات تهدر المال وأيها تجذب العملاء.' },
+        { name: 'ملخصات تنفيذية', explanation: 'ملخصات أداء أسبوعية تُرسل إلى واتساب الخاص بك - لا مزيد من جداول البيانات.' }
       ]
     }
   }
