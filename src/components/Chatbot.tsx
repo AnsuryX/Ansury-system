@@ -1,6 +1,6 @@
 
 import React, { useState, useRef, useEffect } from 'react';
-import { MessageSquare, X, Send, Bot, User, Loader2, Headset, CheckCircle, Trash2 } from 'lucide-react';
+import { MessageSquare, X, Send, Bot, User, Loader2, Headset, CheckCircle, Trash2, MessageCircle } from 'lucide-react';
 import { chatWithAura } from '../services/geminiService';
 import { CHATBOT_WELCOME_MESSAGES } from '../constants';
 import { Language } from '../types';
@@ -160,6 +160,15 @@ const Chatbot: React.FC<{ onHandover: () => void; lang: Language }> = ({ onHando
               >
                 <Headset size={20} className="group-hover:scale-110" />
               </button>
+              <a
+                href="https://wa.me/97451182644"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 hover:bg-green-500/10 rounded-xl text-green-400 transition-all group"
+                title="Direct WhatsApp Sync"
+              >
+                <MessageCircle size={20} className="group-hover:scale-110" />
+              </a>
             </div>
           </div>
 
@@ -168,8 +177,8 @@ const Chatbot: React.FC<{ onHandover: () => void; lang: Language }> = ({ onHando
             {messages.map((m, i) => (
               <div key={i} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                 <div className={`max-w-[85%] p-5 rounded-2xl text-base font-heading leading-relaxed ${m.role === 'user'
-                    ? 'bg-cyan-500 text-slate-900 font-bold rounded-tr-none shadow-[0_4px_15_rgba(34,211,238,0.2)]'
-                    : 'bg-slate-900/80 border border-white/5 text-slate-200 rounded-tl-none'
+                  ? 'bg-cyan-500 text-slate-900 font-bold rounded-tr-none shadow-[0_4px_15_rgba(34,211,238,0.2)]'
+                  : 'bg-slate-900/80 border border-white/5 text-slate-200 rounded-tl-none'
                   }`}>
                   {m.text}
                 </div>
@@ -211,6 +220,19 @@ const Chatbot: React.FC<{ onHandover: () => void; lang: Language }> = ({ onHando
                     >
                       {handoverStatus === 'sending' ? <Loader2 className="animate-spin" size={14} /> : 'Request Specialist'}
                     </button>
+                    <div className="relative py-2">
+                      <div className="absolute inset-0 flex items-center"><span className="w-full border-t border-white/5"></span></div>
+                      <div className="relative flex justify-center text-[10px] uppercase tracking-widest text-slate-500 bg-slate-900/90 px-2 py-1">OR</div>
+                    </div>
+                    <a
+                      href="https://wa.me/97451182644"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full py-3 bg-green-500/20 text-green-400 border border-green-500/30 font-black text-xs rounded-xl hover:bg-green-500/30 transition-all flex items-center justify-center space-x-2"
+                    >
+                      <MessageCircle size={14} />
+                      <span>Direct WhatsApp Sync</span>
+                    </a>
                   </form>
                 )}
               </div>
