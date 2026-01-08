@@ -1,42 +1,42 @@
 
 import React from 'react';
 import { Layout, BrainCircuit, MessageSquareQuote, RefreshCcw, LayoutTemplate, Bot, Zap, LineChart } from 'lucide-react';
-import { Service, CaseStudy } from './types';
+import { Service, CaseStudy, Testimonial } from './types';
 
 export const SERVICES: Service[] = [
   {
     id: 'conversion-pages',
     title: { en: 'Conversion Architecture', ar: 'هندسة التحويل' },
-    description: { 
-      en: 'Elite landing pages engineered for the Qatari market, optimized for lightning-fast speeds and maximum lead capture.', 
-      ar: 'صفحات هبوط نخبوية مصممة للسوق القطري، محسنة لسرعات فائقة وأقصى قدر من جذب العملاء.' 
+    description: {
+      en: 'Elite landing pages engineered for the Qatari market, optimized for lightning-fast speeds and maximum lead capture.',
+      ar: 'صفحات هبوط نخبوية مصممة للسوق القطري، محسنة لسرعات فائقة وأقصى قدر من جذب العملاء.'
     },
     icon: 'LayoutTemplate'
   },
   {
     id: 'ai-qualification',
     title: { en: 'Autonomous Qualification', ar: 'التأهيل الذاتي' },
-    description: { 
-      en: 'AI-driven screening that filters out looky-loos and identifies high-intent buyers before you ever speak to them.', 
-      ar: 'فحص مدعوم بالذكاء الاصطناعي يصفي الفضوليين ويحدد المشترين ذوي النية العالية قبل أن تتحدث إليهم.' 
+    description: {
+      en: 'AI-driven screening and dynamic scoring that identifies high-intent buyers based on budget, urgency, and fit.',
+      ar: 'فحص مدعوم بالذكاء الاصطناعي وتقييم ديناميكي يحدد المشترين ذوي النية العالية بناءً على الميزانية والإلحاح والملاءمة.'
     },
     icon: 'BrainCircuit'
   },
   {
     id: 'follow-up-engine',
     title: { en: '24/7 Follow-up Protocol', ar: 'بروتوكول المتابعة 24/7' },
-    description: { 
-      en: 'Never lose a lead to silence. Our bots follow up via WhatsApp, SMS, and Email within seconds of contact.', 
-      ar: 'لا تفقد عميلاً بسبب الصمت أبداً. تقوم بوتاتنا بالمتابعة عبر واتساب ورسائل SMS والبريد الإلكتروني في غضون ثوانٍ.' 
+    description: {
+      en: 'Never lose a lead to silence. Our bots follow up via WhatsApp, SMS, and Email within seconds of contact.',
+      ar: 'لا تفقد عميلاً بسبب الصمت أبداً. تقوم بوتاتنا بالمتابعة عبر واتساب ورسائل SMS والبريد الإلكتروني في غضون ثوانٍ.'
     },
     icon: 'Zap'
   },
   {
     id: 'growth-sync',
     title: { en: 'Growth Synchronization', ar: 'مزامنة النمو' },
-    description: { 
-      en: 'Seamless CRM integration that maps every automated touchpoint to your bottom line revenue.', 
-      ar: 'تكامل CRM سلس يربط كل نقطة اتصال مؤتمتة بصافي إيراداتك.' 
+    description: {
+      en: 'Seamless CRM integration that maps every automated touchpoint to your bottom line revenue.',
+      ar: 'تكامل CRM سلس يربط كل نقطة اتصال مؤتمتة بصافي إيراداتك.'
     },
     icon: 'LineChart'
   }
@@ -65,11 +65,13 @@ export const SERVICE_DETAILS = {
     features: {
       en: [
         { name: 'Intent Scoring', explanation: 'AI agents that ask strategic questions to determine budget, timeline, and urgency automatically.' },
+        { name: 'AI Lead Scoring', explanation: 'Sophisticated ranking based on budget, urgency, and business fit to prioritize high-value prospects.' },
         { name: 'Multi-Channel Capture', explanation: 'Uniform qualification logic across your website, Instagram DMs, and WhatsApp.' },
         { name: 'Instant CRM Entry', explanation: 'Qualified leads are automatically pushed to your sales team with a full summary of their needs.' }
       ],
       ar: [
         { name: 'سجل النية', explanation: 'وكلاء ذكاء اصطناعي يطرحون أسئلة استراتيجية لتحديد الميزانية والجدول الزمني ومدى الإلحاح آلياً.' },
+        { name: 'تقييم العملاء الذكي', explanation: 'تصنيف متطور يعتمد على الميزانية ومدى الإلحاح وملاءمة العمل لتحديد أولويات العملاء ذوي القيمة العالية.' },
         { name: 'جذب متعدد القنوات', explanation: 'منطق تأهيل موحد عبر موقعك الإلكتروني ورسائل إنستغرام وواتساب.' },
         { name: 'إدخال CRM فوري', explanation: 'يتم دفع العملاء المؤهلين تلقائياً إلى فريق المبيعات مع ملخص كامل لاحتياجاتهم.' }
       ]
@@ -115,9 +117,9 @@ export const CASE_STUDIES: CaseStudy[] = [
     client: 'Lusail Prime Reality',
     title: { en: 'Converting Passive Browsers into Qualified Investors', ar: 'تحويل المتصفحين السلبيين إلى مستثمرين مؤهلين' },
     category: { en: 'Real Estate / Funnel Automation', ar: 'عقارات / أتمتة الأقماع' },
-    description: { 
-      en: 'We replaced their static website with a high-conversion engine that qualified leads via WhatsApp.', 
-      ar: 'استبدلنا موقعهم الإلكتروني الثابت بمحرك تحويل عالي الأداء يقوم بتأهيل العملاء عبر واتساب.' 
+    description: {
+      en: 'We replaced their static website with a high-conversion engine that qualified leads via WhatsApp.',
+      ar: 'استبدلنا موقعهم الإلكتروني الثابت بمحرك تحويل عالي الأداء يقوم بتأهيل العملاء عبر واتساب.'
     },
     results: {
       en: ['400% ROI on ad spend', '85% Automatic qualification', '2min Lead response time'],
@@ -131,9 +133,9 @@ export const CASE_STUDIES: CaseStudy[] = [
     client: 'Pearl Dental Clinic',
     title: { en: 'Automating the Patient Booking Loop', ar: 'أتمتة حلقة حجز المرضى' },
     category: { en: 'Medical / Lead Automation', ar: 'طبي / أتمتة العملاء' },
-    description: { 
-      en: 'A 24/7 AI receptionist that qualifies insurance and books appointments instantly.', 
-      ar: 'موظف استقبال ذكاء اصطناعي يعمل 24/7 يتحقق من التأمين ويحجز المواعيد فوراً.' 
+    description: {
+      en: 'A 24/7 AI receptionist that qualifies insurance and books appointments instantly.',
+      ar: 'موظف استقبال ذكاء اصطناعي يعمل 24/7 يتحقق من التأمين ويحجز المواعيد فوراً.'
     },
     results: {
       en: ['120 New bookings/mo', 'Zero missed inquiries', '60% Admin time saved'],
@@ -141,5 +143,61 @@ export const CASE_STUDIES: CaseStudy[] = [
     },
     image: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=1200',
     tags: ['Healthcare', 'Appointment AI', 'Automation']
+  }
+];
+
+
+export const TESTIMONIALS: Testimonial[] = [
+  {
+    id: '1',
+    name: 'Khalid Al-Mansouri',
+    role: { en: 'CEO', ar: 'الرئيس التنفيذي' },
+    company: 'TechPulse Qatar',
+    logo: '/logos/tech_startup.png',
+    content: {
+      en: "Ansury Systems completely transformed our lead generation. We've seen a 300% increase in qualified bookings since implementing their AI engine.",
+      ar: "قامت شركة أنسوري للأنظمة بتحويل عملية توليد العملاء المحتملين لدينا تمامًا. لقد شهدنا زيادة بنسبة 300% في الحجوزات المؤهلة منذ تنفيذ محرك الذكاء الاصطناعي الخاص بهم."
+    }
+  },
+  {
+    id: '2',
+    name: 'Sarah Henderson',
+    role: { en: 'Marketing Director', ar: 'مديرة التسويق' },
+    company: 'Elite Estates Doha',
+    logo: '/logos/luxury_realestate.png',
+    content: {
+      en: "The automation is seamless. Our sales team now only speaks to serious investors, saving us countless hours every week.",
+      ar: "الأتمتة سلسة للغاية. يتحدث فريق المبيعات لدينا الآن فقط مع المستثمرين الجادين، مما يوفر لنا ساعات لا حصر لها كل أسبوع."
+    }
+  },
+  {
+    id: '3',
+    name: 'Dr. Faisal Al-Thani',
+    role: { en: 'Founder', ar: 'المؤسس' },
+    company: 'Verdant Health Center',
+    logo: '/logos/modern_healthcare.png',
+    content: {
+      en: "Finally, a solution that understands the local market. The Arabic NLP capabilities of their bots are unmatched.",
+      ar: "أخيرًا، حل يفهم السوق المحلي. قدرات معالجة اللغات الطبيعية العربية لبوتاتهم لا ميل لها."
+    }
+  }
+];
+
+export const CHATBOT_WELCOME_MESSAGES = [
+  {
+    en: "Protocol initiated. I am Ansur. What is the single biggest bottleneck currently stopping your business from scaling in Qatar?",
+    ar: "تم بدء البروتوكول. أنا أنسور. ما هي أكبر عقبة تواجه عملك حالياً وتمنعه من التوسع في قطر؟"
+  },
+  {
+    en: "Neural link established. How can I help you automate your lead generation and boost your ROI today?",
+    ar: "تم إنشاء الارتباط العصبي. كيف يمكنني مساعدتك في أتمتة توليد العملاء وزيادة عائد الاستثمار اليوم؟"
+  },
+  {
+    en: "Welcome to the future of Qatari business growth. What strategic challenge are we solving together today?",
+    ar: "مرحباً بك في مستقبل نمو الأعمال في قطر. ما التحدي الاستراتيجي الذي سنقوم بحله سوياً اليوم؟"
+  },
+  {
+    en: "Ansur Interface active. Ready to turn your static traffic into a high-performance lead engine. Where should we start?",
+    ar: "واجهة أنسور نشطة. جاهزون لتحويل زياراتك الثابتة إلى محرك عملاء عالي الأداء. من أين نبدأ؟"
   }
 ];

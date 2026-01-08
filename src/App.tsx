@@ -17,14 +17,15 @@ import {
   LayoutTemplate,
   BrainCircuit,
   Zap,
-  LineChart
+  LineChart,
+  MessageSquareQuote
 } from 'lucide-react';
 import Navbar from './components/Navbar';
 import StrategyGenerator from './components/StrategyGenerator';
 import Chatbot from './components/Chatbot';
 import SEO from './components/SEO';
 import { Page, Language } from './types';
-import { SERVICES, CASE_STUDIES, SERVICE_DETAILS } from './constants';
+import { SERVICES, CASE_STUDIES, SERVICE_DETAILS, TESTIMONIALS } from './constants';
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<Page>('home');
@@ -131,6 +132,8 @@ const App: React.FC = () => {
     flagshipDesc: lang === 'en' ? "Real results. Real ROI. No manual follow-ups." : "نتائج حقيقية. عائد حقيقي. لا متابعات يدوية.",
     caseNo: lang === 'en' ? "System Exhibit" : "نموذج النظام",
     readBreakdown: lang === 'en' ? "See the Blueprint" : "مشاهدة المخطط",
+    testimonialsTitle: lang === 'en' ? "Client Feedback." : "آراء العملاء.",
+    testimonialsDesc: lang === 'en' ? "Trusted by forward-thinking companies across Qatar." : "موثوق به من قبل الشركات المتطلعة للمستقبل في جميع أنحاء قطر.",
   };
 
   const seoData = {
@@ -160,199 +163,240 @@ const App: React.FC = () => {
     }
   };
 
-  const renderHome = () => (
-    <>
-      <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
-        <div className="absolute top-0 -left-4 w-72 h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-        <div className="absolute top-0 -right-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+  const renderHome = () => {
+    return (
+      <>
+        <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
+          <div className="absolute top-0 -left-4 w-72 h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+          <div className="absolute top-0 -right-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
 
-        <div className="container mx-auto px-6 relative z-10 text-center">
-          <div className="inline-flex items-center space-x-2 rtl:space-x-reverse bg-slate-900 border border-slate-700 px-4 py-2 rounded-full mb-8 animate-in fade-in slide-in-from-bottom duration-700">
-            <span className="flex h-2 w-2 rounded-full bg-cyan-400 animate-pulse"></span>
-            <span className="text-xs font-bold tracking-widest uppercase text-slate-300">{t.heroTag}</span>
+          <div className="container mx-auto px-6 relative z-10 text-center">
+            <div className="inline-flex items-center space-x-2 rtl:space-x-reverse bg-slate-900 border border-slate-700 px-4 py-2 rounded-full mb-8 animate-in fade-in slide-in-from-bottom duration-700">
+              <span className="flex h-2 w-2 rounded-full bg-cyan-400 animate-pulse"></span>
+              <span className="text-xs font-bold tracking-widest uppercase text-slate-300">{t.heroTag}</span>
+            </div>
+
+            <h1 className="text-5xl md:text-8xl font-black mb-8 leading-[1.1] tracking-tight">
+              {lang === 'en' ? (
+                <>The <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600 italic">Autonomous</span> Lead Engine.</>
+              ) : (
+                <>{t.heroTitle}</>
+              )}
+            </h1>
+
+            <p className="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto mb-12 leading-relaxed">
+              {t.heroDesc}
+            </p>
+
+            <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-6 rtl:space-x-reverse animate-in fade-in slide-in-from-bottom duration-1500 delay-500">
+              <button
+                onClick={() => setCurrentPage('contact')}
+                className="w-full md:w-auto px-10 py-5 bg-cyan-500 text-slate-900 font-black rounded-full text-lg hover:bg-cyan-400 transition-all shadow-[0_0_30px_rgba(34,211,238,0.4)] flex items-center justify-center"
+              >
+                {t.ctaStart} <ArrowRight className={`ml-2 rtl:mr-2 rtl:rotate-180`} />
+              </button>
+              <button
+                onClick={() => setCurrentPage('portfolio')}
+                className="w-full md:w-auto px-10 py-5 glass text-white font-bold rounded-full text-lg flex items-center justify-center hover:bg-white/10 transition-all"
+              >
+                <Play className="mr-2 rtl:ml-2 fill-current" size={18} /> {t.ctaShowreel}
+              </button>
+            </div>
           </div>
+        </section>
 
-          <h1 className="text-5xl md:text-8xl font-black mb-8 leading-[1.1] tracking-tight">
-            {lang === 'en' ? (
-              <>The <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600 italic">Autonomous</span> Lead Engine.</>
-            ) : (
-              <>{t.heroTitle}</>
-            )}
-          </h1>
+        <section className="py-24 bg-slate-950 relative overflow-hidden">
+          <div className="container mx-auto px-6">
+            <div className="text-center mb-20">
+              <h2 className="text-4xl md:text-6xl font-black mb-6">{lang === 'en' ? <>{t.dominance.split(' ')[0]} <span className="text-cyan-400">{t.dominance.split(' ')[1]}</span></> : t.dominance}</h2>
+              <p className="text-slate-400 max-w-2xl mx-auto italic">{t.dominanceDesc}</p>
+            </div>
 
-          <p className="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto mb-12 leading-relaxed">
-            {t.heroDesc}
-          </p>
-
-          <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-6 rtl:space-x-reverse animate-in fade-in slide-in-from-bottom duration-1500 delay-500">
-            <button
-              onClick={() => setCurrentPage('contact')}
-              className="w-full md:w-auto px-10 py-5 bg-cyan-500 text-slate-900 font-black rounded-full text-lg hover:bg-cyan-400 transition-all shadow-[0_0_30px_rgba(34,211,238,0.4)] flex items-center justify-center"
-            >
-              {t.ctaStart} <ArrowRight className={`ml-2 rtl:mr-2 rtl:rotate-180`} />
-            </button>
-            <button
-              onClick={() => setCurrentPage('portfolio')}
-              className="w-full md:w-auto px-10 py-5 glass text-white font-bold rounded-full text-lg flex items-center justify-center hover:bg-white/10 transition-all"
-            >
-              <Play className="mr-2 rtl:ml-2 fill-current" size={18} /> {t.ctaShowreel}
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-24 bg-slate-950 relative overflow-hidden">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-6xl font-black mb-6">{lang === 'en' ? <>{t.dominance.split(' ')[0]} <span className="text-cyan-400">{t.dominance.split(' ')[1]}</span></> : t.dominance}</h2>
-            <p className="text-slate-400 max-w-2xl mx-auto italic">{t.dominanceDesc}</p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-5 space-y-4">
-              {SERVICES.map((s) => (
-                <div
-                  key={s.id}
-                  onMouseEnter={() => {
-                    setActiveService(s.id);
-                    setHoveredFeature(null);
-                  }}
-                  onClick={() => setActiveService(s.id)}
-                  className={`p-6 rounded-2xl cursor-pointer transition-all border ${activeService === s.id ? 'glass border-cyan-500/50 scale-[1.02] opacity-100 shadow-[0_0_20px_rgba(34,211,238,0.1)]' : 'border-transparent opacity-40 grayscale hover:opacity-60'}`}
-                >
-                  <div className="flex items-center space-x-6 rtl:space-x-reverse">
-                    <div className={`w-14 h-14 rounded-xl flex items-center justify-center ${activeService === s.id ? 'bg-cyan-500' : 'bg-slate-800'}`}>
-                      {getIcon(s.icon, 24, activeService === s.id)}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+              <div className="lg:col-span-5 space-y-4">
+                {SERVICES.map((s) => (
+                  <div
+                    key={s.id}
+                    onMouseEnter={() => {
+                      setActiveService(s.id);
+                      setHoveredFeature(null);
+                    }}
+                    onClick={() => setActiveService(s.id)}
+                    className={`p-6 rounded-2xl cursor-pointer transition-all border ${activeService === s.id ? 'glass border-cyan-500/50 scale-[1.02] opacity-100 shadow-[0_0_20px_rgba(34,211,238,0.1)]' : 'border-transparent opacity-40 grayscale hover:opacity-60'}`}
+                  >
+                    <div className="flex items-center space-x-6 rtl:space-x-reverse">
+                      <div className={`w-14 h-14 rounded-xl flex items-center justify-center ${activeService === s.id ? 'bg-cyan-500' : 'bg-slate-800'}`}>
+                        {getIcon(s.icon, 24, activeService === s.id)}
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-black">{s.title[lang]}</h3>
+                        <p className="text-sm text-slate-400 line-clamp-2">{s.description[lang]}</p>
+                      </div>
                     </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="lg:col-span-7">
+                <div className="glass rounded-[3rem] p-12 border-cyan-500/20 relative overflow-hidden group min-h-[500px] flex flex-col justify-center">
+                  <div className="relative z-10 animate-in fade-in slide-in-from-right-10 duration-500">
+                    <div className="flex items-center space-x-3 rtl:space-x-reverse mb-8">
+                      <span className="px-4 py-1 bg-cyan-500/10 text-cyan-400 text-[10px] font-black uppercase tracking-widest rounded-full border border-cyan-500/20">{t.activeModule}</span>
+                      <Sparkles size={16} className="text-cyan-400" />
+                    </div>
+
+                    <h2 className="text-4xl font-black mb-4 text-white">{SERVICES.find(s => s.id === activeService)?.title[lang]}</h2>
+                    <p className="text-lg text-slate-300 mb-10 leading-relaxed max-w-xl">
+                      {SERVICES.find(s => s.id === activeService)?.description[lang]}
+                    </p>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+                      <div>
+                        <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">{t.roiLabel}</h4>
+                        <p className="text-lg font-semibold text-cyan-400 leading-relaxed">
+                          {SERVICE_DETAILS[activeService as keyof typeof SERVICE_DETAILS].roi[lang]}
+                        </p>
+                      </div>
+                      <div>
+                        <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">{t.techStack}</h4>
+                        <div className="flex flex-wrap gap-2">
+                          {SERVICE_DETAILS[activeService as keyof typeof SERVICE_DETAILS].tools.map((t, idx) => (
+                            <span key={idx} className="px-3 py-1 bg-slate-900 rounded-lg text-xs font-bold text-slate-300 border border-white/5">{t}</span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
                     <div>
-                      <h3 className="text-xl font-black">{s.title[lang]}</h3>
-                      <p className="text-sm text-slate-400 line-clamp-2">{s.description[lang]}</p>
+                      <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-6">{t.featuresLabel}</h4>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        {SERVICE_DETAILS[activeService as keyof typeof SERVICE_DETAILS].features[lang].map((f, idx) => (
+                          <div
+                            key={idx}
+                            onMouseEnter={() => setHoveredFeature(idx)}
+                            onMouseLeave={() => setHoveredFeature(null)}
+                            className="relative group/feat"
+                          >
+                            <div className="p-4 bg-slate-900/50 rounded-xl border border-white/5 group-hover/feat:border-cyan-500/30 transition-all flex items-center space-x-3 rtl:space-x-reverse h-full cursor-help">
+                              <CheckCircle2 size={16} className="text-cyan-500 shrink-0" />
+                              <span className="text-xs font-medium text-slate-300 group-hover/feat:text-white transition-colors">{f.name}</span>
+                            </div>
+
+                            {/* Interactive Tooltip */}
+                            {hoveredFeature === idx && (
+                              <div className={`absolute bottom-full mb-3 left-1/2 -translate-x-1/2 w-64 p-5 glass rounded-2xl border-cyan-500/40 shadow-[0_10px_30px_rgba(0,0,0,0.5),0_0_15px_rgba(34,211,238,0.2)] z-[60] animate-in fade-in slide-in-from-bottom-2 duration-300 pointer-events-none`}>
+                                <div className="flex items-center space-x-2 rtl:space-x-reverse mb-2">
+                                  <Info size={14} className="text-cyan-400" />
+                                  <span className="text-[10px] font-black uppercase tracking-widest text-cyan-400">{lang === 'en' ? 'Protocol' : 'بروتوكول'}</span>
+                                </div>
+                                <p className="text-xs text-slate-200 leading-relaxed font-medium">
+                                  {f.explanation}
+                                </p>
+                                {/* Arrow */}
+                                <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-t-[8px] border-t-cyan-500/40"></div>
+                              </div>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="mt-12 flex justify-end">
+                      <button
+                        onClick={() => setCurrentPage('contact')}
+                        className="px-8 py-4 bg-cyan-500 text-slate-900 font-black rounded-xl hover:bg-cyan-400 transition-all transform hover:scale-105 active:scale-95 flex items-center"
+                      >
+                        {t.initStrategy} <ArrowUpRight className="ml-2 rtl:mr-2" size={18} />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <StrategyGenerator />
+
+        <section className="py-24">
+          <div className="container mx-auto px-6 text-center">
+            <h2 className="text-4xl md:text-6xl font-black mb-6">{lang === 'en' ? <>{t.winsTitle.split(' ')[0]} <span className="text-cyan-400">{t.winsTitle.split(' ')[1]}</span></> : t.winsTitle}</h2>
+            <p className="text-lg text-slate-400 max-w-2xl mx-auto mb-16">{t.winsDesc}</p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {CASE_STUDIES.map((study) => (
+                <div key={study.id} className="group overflow-hidden rounded-3xl glass flex flex-col h-full text-left rtl:text-right">
+                  <div className="relative h-72 overflow-hidden">
+                    <img src={study.image} alt={study.client} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                    <div className="absolute top-4 left-4 rtl:left-auto rtl:right-4">
+                      <span className="px-4 py-1 bg-slate-900/80 backdrop-blur-md text-[10px] font-bold uppercase tracking-widest rounded-full border border-white/10">{study.category[lang]}</span>
+                    </div>
+                  </div>
+                  <div className="p-8 flex flex-col flex-grow">
+                    <h4 className="text-xs font-bold text-cyan-400 mb-2">{study.client}</h4>
+                    <h3 className="text-2xl font-black mb-4 leading-tight">{study.title[lang]}</h3>
+                    <div className="space-y-3 mt-auto">
+                      {study.results[lang].map((res, idx) => (
+                        <div key={idx} className="flex items-center text-sm text-slate-300">
+                          <CheckCircle2 size={16} className="text-cyan-400 mr-2 rtl:ml-2 shrink-0" />
+                          <span>{res}</span>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>
               ))}
             </div>
 
-            <div className="lg:col-span-7">
-              <div className="glass rounded-[3rem] p-12 border-cyan-500/20 relative overflow-hidden group min-h-[500px] flex flex-col justify-center">
-                <div className="relative z-10 animate-in fade-in slide-in-from-right-10 duration-500">
-                  <div className="flex items-center space-x-3 rtl:space-x-reverse mb-8">
-                    <span className="px-4 py-1 bg-cyan-500/10 text-cyan-400 text-[10px] font-black uppercase tracking-widest rounded-full border border-cyan-500/20">{t.activeModule}</span>
-                    <Sparkles size={16} className="text-cyan-400" />
-                  </div>
-
-                  <h2 className="text-4xl font-black mb-4 text-white">{SERVICES.find(s => s.id === activeService)?.title[lang]}</h2>
-                  <p className="text-lg text-slate-300 mb-10 leading-relaxed max-w-xl">
-                    {SERVICES.find(s => s.id === activeService)?.description[lang]}
-                  </p>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
-                    <div>
-                      <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">{t.roiLabel}</h4>
-                      <p className="text-lg font-semibold text-cyan-400 leading-relaxed">
-                        {SERVICE_DETAILS[activeService as keyof typeof SERVICE_DETAILS].roi[lang]}
-                      </p>
-                    </div>
-                    <div>
-                      <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">{t.techStack}</h4>
-                      <div className="flex flex-wrap gap-2">
-                        {SERVICE_DETAILS[activeService as keyof typeof SERVICE_DETAILS].tools.map((t, idx) => (
-                          <span key={idx} className="px-3 py-1 bg-slate-900 rounded-lg text-xs font-bold text-slate-300 border border-white/5">{t}</span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-6">{t.featuresLabel}</h4>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                      {SERVICE_DETAILS[activeService as keyof typeof SERVICE_DETAILS].features[lang].map((f, idx) => (
-                        <div
-                          key={idx}
-                          onMouseEnter={() => setHoveredFeature(idx)}
-                          onMouseLeave={() => setHoveredFeature(null)}
-                          className="relative group/feat"
-                        >
-                          <div className="p-4 bg-slate-900/50 rounded-xl border border-white/5 group-hover/feat:border-cyan-500/30 transition-all flex items-center space-x-3 rtl:space-x-reverse h-full cursor-help">
-                            <CheckCircle2 size={16} className="text-cyan-500 shrink-0" />
-                            <span className="text-xs font-medium text-slate-300 group-hover/feat:text-white transition-colors">{f.name}</span>
-                          </div>
-
-                          {/* Interactive Tooltip */}
-                          {hoveredFeature === idx && (
-                            <div className={`absolute bottom-full mb-3 left-1/2 -translate-x-1/2 w-64 p-5 glass rounded-2xl border-cyan-500/40 shadow-[0_10px_30px_rgba(0,0,0,0.5),0_0_15px_rgba(34,211,238,0.2)] z-[60] animate-in fade-in slide-in-from-bottom-2 duration-300 pointer-events-none`}>
-                              <div className="flex items-center space-x-2 rtl:space-x-reverse mb-2">
-                                <Info size={14} className="text-cyan-400" />
-                                <span className="text-[10px] font-black uppercase tracking-widest text-cyan-400">{lang === 'en' ? 'Protocol' : 'بروتوكول'}</span>
-                              </div>
-                              <p className="text-xs text-slate-200 leading-relaxed font-medium">
-                                {f.explanation}
-                              </p>
-                              {/* Arrow */}
-                              <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-t-[8px] border-t-cyan-500/40"></div>
-                            </div>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="mt-12 flex justify-end">
-                    <button
-                      onClick={() => setCurrentPage('contact')}
-                      className="px-8 py-4 bg-cyan-500 text-slate-900 font-black rounded-xl hover:bg-cyan-400 transition-all transform hover:scale-105 active:scale-95 flex items-center"
-                    >
-                      {t.initStrategy} <ArrowUpRight className="ml-2 rtl:mr-2" size={18} />
-                    </button>
-                  </div>
-                </div>
-              </div>
+            <div className="mt-16">
+              <button onClick={() => setCurrentPage('portfolio')} className="px-12 py-4 border border-white/10 hover:border-cyan-500 rounded-full font-bold transition-all inline-flex items-center">
+                {t.seeFullPortfolio} <ArrowRight size={18} className="ml-2 rtl:mr-2 rtl:rotate-180" />
+              </button>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <StrategyGenerator />
+        <section className="py-24 bg-slate-950/50 relative overflow-hidden">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.05)_0%,transparent_70%)]"></div>
+          <div className="container mx-auto px-6 relative z-10">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-6xl font-black mb-6">
+                {lang === 'en' ? (
+                  <>{t.testimonialsTitle.split(' ')[0]} <span className="text-cyan-400">{t.testimonialsTitle.split(' ')[1]}</span></>
+                ) : (
+                  t.testimonialsTitle
+                )}
+              </h2>
+              <p className="text-lg text-slate-400 max-w-2xl mx-auto">{t.testimonialsDesc}</p>
+            </div>
 
-      <section className="py-24">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-4xl md:text-6xl font-black mb-6">{lang === 'en' ? <>{t.winsTitle.split(' ')[0]} <span className="text-cyan-400">{t.winsTitle.split(' ')[1]}</span></> : t.winsTitle}</h2>
-          <p className="text-lg text-slate-400 max-w-2xl mx-auto mb-16">{t.winsDesc}</p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {CASE_STUDIES.map((study) => (
-              <div key={study.id} className="group overflow-hidden rounded-3xl glass flex flex-col h-full text-left rtl:text-right">
-                <div className="relative h-72 overflow-hidden">
-                  <img src={study.image} alt={study.client} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                  <div className="absolute top-4 left-4 rtl:left-auto rtl:right-4">
-                    <span className="px-4 py-1 bg-slate-900/80 backdrop-blur-md text-[10px] font-bold uppercase tracking-widest rounded-full border border-white/10">{study.category[lang]}</span>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {TESTIMONIALS.map((testimonial) => (
+                <div key={testimonial.id} className="glass p-8 rounded-[2rem] border-white/5 flex flex-col items-start hover:border-cyan-500/30 transition-all group">
+                  <div className="flex items-center space-x-4 rtl:space-x-reverse mb-8">
+                    <div className="w-16 h-16 rounded-2xl overflow-hidden bg-slate-900 border border-white/10 p-2 group-hover:scale-110 transition-transform duration-500">
+                      <img src={testimonial.logo} alt={testimonial.company} className="w-full h-full object-contain" />
+                    </div>
+                    <div>
+                      <h4 className="font-black text-white">{testimonial.name}</h4>
+                      <p className="text-xs font-bold text-cyan-400 uppercase tracking-widest">{testimonial.role[lang]}</p>
+                    </div>
+                  </div>
+                  <div className="relative mb-6">
+                    <MessageSquareQuote className="absolute -top-4 -left-4 text-cyan-500/20" size={40} />
+                    <p className="text-slate-300 leading-relaxed italic relative z-10">"{testimonial.content[lang]}"</p>
+                  </div>
+                  <div className="mt-auto">
+                    <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">{testimonial.company}</p>
                   </div>
                 </div>
-                <div className="p-8 flex flex-col flex-grow">
-                  <h4 className="text-xs font-bold text-cyan-400 mb-2">{study.client}</h4>
-                  <h3 className="text-2xl font-black mb-4 leading-tight">{study.title[lang]}</h3>
-                  <div className="space-y-3 mt-auto">
-                    {study.results[lang].map((res, idx) => (
-                      <div key={idx} className="flex items-center text-sm text-slate-300">
-                        <CheckCircle2 size={16} className="text-cyan-400 mr-2 rtl:ml-2 shrink-0" />
-                        <span>{res}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-
-          <div className="mt-16">
-            <button onClick={() => setCurrentPage('portfolio')} className="px-12 py-4 border border-white/10 hover:border-cyan-500 rounded-full font-bold transition-all inline-flex items-center">
-              {t.seeFullPortfolio} <ArrowRight size={18} className="ml-2 rtl:mr-2 rtl:rotate-180" />
-            </button>
-          </div>
-        </div>
-      </section>
-    </>
-  );
+        </section>
+      </>
+    );
+  };
 
   const renderPortfolio = () => {
     const activeStudy = CASE_STUDIES[carouselIndex];
@@ -490,7 +534,10 @@ const App: React.FC = () => {
       />
       <Navbar currentPage={currentPage} setPage={setCurrentPage} lang={lang} toggleLang={toggleLang} />
       <main>{renderContent()}</main>
-      <Chatbot onHandover={() => { setCurrentPage('contact'); setTimeout(() => document.getElementById('contact-section')?.scrollIntoView({ behavior: 'smooth' }), 100); }} />
+      <Chatbot
+        lang={lang}
+        onHandover={() => { setCurrentPage('contact'); setTimeout(() => document.getElementById('contact-section')?.scrollIntoView({ behavior: 'smooth' }), 100); }}
+      />
       <footer className="py-20 border-t border-white/5 bg-slate-950">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20 text-left rtl:text-right">

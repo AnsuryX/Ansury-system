@@ -2,6 +2,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { MessageSquare, X, Send, Bot, User, Loader2, Headset, CheckCircle, Trash2 } from 'lucide-react';
 import { chatWithAura } from '../services/geminiService';
+import { CHATBOT_WELCOME_MESSAGES } from '../constants';
+import { Language } from '../types';
 
 interface Message {
   role: 'user' | 'model';
@@ -10,7 +12,12 @@ interface Message {
 
 const STORAGE_KEY = 'ansury_chat_history';
 
-const Chatbot: React.FC<{ onHandover: () => void }> = ({ onHandover }) => {
+const getRandomWelcomeMessage = (lang: Language) => {
+  const randomIndex = Math.floor(Math.random() * CHATBOT_WELCOME_MESSAGES.length);
+  return CHATBOT_WELCOME_MESSAGES[randomIndex][lang];
+};
+
+const Chatbot: React.FC<{ onHandover: () => void; lang: Language }> = ({ onHandover, lang }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
@@ -29,13 +36,13 @@ const Chatbot: React.FC<{ onHandover: () => void }> = ({ onHandover }) => {
         if (Array.isArray(parsed) && parsed.length > 0) {
           setMessages(parsed);
         } else {
-          setMessages([{ role: 'model', text: 'Protocol initiated. I am Ansur. What is the single biggest bottleneck currently stopping your business from scaling in Qatar?' }]);
+          setMessages([{ role: 'model', text: getRandomWelcomeMessage(lang) }]);
         }
       } catch (e) {
-        setMessages([{ role: 'model', text: 'Protocol initiated. I am Ansur. What is the single biggest bottleneck currently stopping your business from scaling in Qatar?' }]);
+        setMessages([{ role: 'model', text: getRandomWelcomeMessage(lang) }]);
       }
     } else {
-      setMessages([{ role: 'model', text: 'Protocol initiated. I am Ansur. What is the single biggest bottleneck currently stopping your business from scaling in Qatar?' }]);
+      setMessages([{ role: 'model', text: getRandomWelcomeMessage(lang) }]);
     }
   }, []);
 
@@ -60,7 +67,7 @@ const Chatbot: React.FC<{ onHandover: () => void }> = ({ onHandover }) => {
 
     const history = newMessages.map(m => ({ role: m.role, parts: [{ text: m.text }] }));
     const response = await chatWithAura(history, userMsg);
-    
+
     setMessages(prev => [...prev, { role: 'model', text: response || '' }]);
     setIsLoading(false);
   };
@@ -70,8 +77,12 @@ const Chatbot: React.FC<{ onHandover: () => void }> = ({ onHandover }) => {
   };
 
   const clearHistory = () => {
-    if (window.confirm('Are you sure you want to purge current neural history?')) {
-      const initialMsg: Message[] = [{ role: 'model', text: 'Neural buffer purged. Protocol re-initialized. What is the core challenge you are facing today?' }];
+    const confirmMsg = lang === 'en'
+      ? 'Are you sure you want to purge current neural history?'
+      : 'هل أنت متأكد من رغبتك في مسح السجل العصبي الحالي؟';
+
+    if (window.confirm(confirmMsg)) {
+      const initialMsg: Message[] = [{ role: 'model', text: getRandomWelcomeMessage(lang) }];
       setMessages(initialMsg);
       localStorage.setItem(STORAGE_KEY, JSON.stringify(initialMsg));
     }
@@ -110,7 +121,7 @@ const Chatbot: React.FC<{ onHandover: () => void }> = ({ onHandover }) => {
   return (
     <div className="fixed bottom-8 right-8 z-[100]">
       {/* Chat Bubble */}
-      <button 
+      <button
         onClick={() => setIsOpen(!isOpen)}
         className={`w-16 h-16 rounded-full bg-cyan-500 shadow-[0_0_20px_rgba(34,211,238,0.5)] flex items-center justify-center text-slate-900 transition-all transform hover:scale-110 active:scale-95 ${isOpen ? 'rotate-90' : 'animate-bounce'}`}
       >
@@ -135,15 +146,15 @@ const Chatbot: React.FC<{ onHandover: () => void }> = ({ onHandover }) => {
               </div>
             </div>
             <div className="flex items-center space-x-1">
-              <button 
+              <button
                 onClick={clearHistory}
                 className="p-2 hover:bg-red-500/10 rounded-xl text-slate-500 hover:text-red-400 transition-all"
                 title="Purge History"
               >
                 <Trash2 size={16} />
               </button>
-              <button 
-                onClick={handleHandoverRequest} 
+              <button
+                onClick={handleHandoverRequest}
                 className="p-2 hover:bg-white/10 rounded-xl text-cyan-400 transition-all group"
                 title="Request Strategic Handover"
               >
@@ -153,14 +164,13 @@ const Chatbot: React.FC<{ onHandover: () => void }> = ({ onHandover }) => {
           </div>
 
           {/* Messages */}
-          <div ref={scrollRef} className="flex-grow p-6 overflow-y-auto space-y-4 scroll-smooth bg-slate-950/20">
+          <div ref={scrollRef} className="flex-grow p-6 overflow-y-auto space-y-6 scroll-smooth bg-slate-950/20">
             {messages.map((m, i) => (
               <div key={i} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                <div className={`max-w-[85%] p-4 rounded-2xl text-sm leading-relaxed ${
-                  m.role === 'user' 
-                  ? 'bg-cyan-500 text-slate-900 font-bold rounded-tr-none shadow-[0_4px_15_rgba(34,211,238,0.2)]' 
-                  : 'bg-slate-900/80 border border-white/5 text-slate-200 rounded-tl-none'
-                }`}>
+                <div className={`max-w-[85%] p-5 rounded-2xl text-base font-heading leading-relaxed ${m.role === 'user'
+                    ? 'bg-cyan-500 text-slate-900 font-bold rounded-tr-none shadow-[0_4px_15_rgba(34,211,238,0.2)]'
+                    : 'bg-slate-900/80 border border-white/5 text-slate-200 rounded-tl-none'
+                  }`}>
                   {m.text}
                 </div>
               </div>
@@ -177,7 +187,7 @@ const Chatbot: React.FC<{ onHandover: () => void }> = ({ onHandover }) => {
               <div className="bg-slate-900/90 border border-cyan-500/30 p-6 rounded-2xl animate-in zoom-in-95 duration-200">
                 <div className="flex justify-between items-start mb-4">
                   <h5 className="text-cyan-400 font-black text-xs uppercase tracking-widest">Handover Protocol</h5>
-                  <button onClick={() => setShowHandoverForm(false)} className="text-slate-500 hover:text-white"><X size={14}/></button>
+                  <button onClick={() => setShowHandoverForm(false)} className="text-slate-500 hover:text-white"><X size={14} /></button>
                 </div>
                 {handoverStatus === 'success' ? (
                   <div className="text-center py-4 flex flex-col items-center">
@@ -187,7 +197,7 @@ const Chatbot: React.FC<{ onHandover: () => void }> = ({ onHandover }) => {
                 ) : (
                   <form onSubmit={submitHandoverLead} className="space-y-4">
                     <p className="text-xs text-slate-400">Our senior strategists will review this transcript and contact you shortly.</p>
-                    <input 
+                    <input
                       required
                       type="email"
                       value={handoverEmail}
@@ -195,11 +205,11 @@ const Chatbot: React.FC<{ onHandover: () => void }> = ({ onHandover }) => {
                       placeholder="Your Business Email"
                       className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-xs focus:border-cyan-500 outline-none transition-all"
                     />
-                    <button 
+                    <button
                       disabled={handoverStatus === 'sending'}
                       className="w-full py-3 bg-cyan-500 text-slate-900 font-black text-xs rounded-xl hover:bg-cyan-400 flex items-center justify-center space-x-2"
                     >
-                      {handoverStatus === 'sending' ? <Loader2 className="animate-spin" size={14}/> : 'Request Specialist'}
+                      {handoverStatus === 'sending' ? <Loader2 className="animate-spin" size={14} /> : 'Request Specialist'}
                     </button>
                   </form>
                 )}
@@ -210,7 +220,7 @@ const Chatbot: React.FC<{ onHandover: () => void }> = ({ onHandover }) => {
           {/* Input */}
           <div className="p-4 border-t border-white/10 bg-slate-950/80 backdrop-blur-md">
             <div className="relative">
-              <input 
+              <input
                 type="text"
                 disabled={showHandoverForm}
                 value={input}
@@ -219,7 +229,7 @@ const Chatbot: React.FC<{ onHandover: () => void }> = ({ onHandover }) => {
                 placeholder="Synchronize with Ansur..."
                 className="w-full bg-slate-900 border border-slate-800 rounded-xl pl-4 pr-12 py-3 text-sm focus:border-cyan-500 outline-none transition-all disabled:opacity-50"
               />
-              <button 
+              <button
                 onClick={handleSend}
                 disabled={isLoading || !input.trim() || showHandoverForm}
                 className="absolute right-2 top-1.5 p-2 text-cyan-500 hover:text-cyan-400 disabled:opacity-30 transition-colors"
