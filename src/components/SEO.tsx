@@ -15,7 +15,7 @@ const SEO: React.FC<SEOProps> = ({
     lang,
     pageType = 'website',
     canonical = 'https://ansury.systems',
-    image = 'https://ansury.systems/og-image.jpg' // Default OG image
+    image = 'https://ansury.systems/og-image.png' // Default OG image
 }) => {
     const siteName = 'Ansury Systems';
     const fullTitle = `${title} | ${siteName}`;
